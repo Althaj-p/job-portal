@@ -1,0 +1,28 @@
+{% load static %}
+{% block body %}
+
+{% include 'navigation.html' %}
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">admin login</marquee>
+<hr>
+<form class="container mt-5" method="post">
+    {% csrf_token %}
+    <label><b>Username</b></label>
+    <input type="text" class="form-control"placeholder="Username"name="uname">
+    <label><b>Password</b></label>
+    <input type="password" class="form-control"placeholder="Password"name="pwd">
+    <input type="submit"class="btn btn-primary">
+</form>
+
+{% ifequal error "no" %}
+<script>
+    alert("login successful")
+    window.location=('{% url 'admin_home' %}')
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    alert("something went wrong")
+</script>
+{% endifequal %}
+
+{% endblock %}

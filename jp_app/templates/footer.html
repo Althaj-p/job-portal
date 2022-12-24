@@ -1,0 +1,28 @@
+{% load static %}
+<div class="mt-5" style="background-color:black;width:100%;height:280px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-4 mt-3 ">
+            <h3 class="text-white  ">contact Information</h3>
+            <p style="color:yellow"><i class="fa fa-map-marker text-danger"></i>  pandikkad,malappuram,kerala,india</p>
+            <p style="color:yellow"><i class="fa fa-envelope text-danger"></i>  muhammedalthaj371@gmail.com</p>
+            <p style="color:yellow"><i class="fa fa-mobile text-danger"></i>  phone:+917902559371</p>
+            <p style="color:yellow"><i class="fa fa-globe text-danger"></i>  www.althaj.com</p>
+        </div>
+        <div class="col-md-4 mt-3">
+            <h3 class="text-white ">online placement</h3>
+            <p style="color:yellow" class="mr-5 mr-5">online job portal website deals specially with employment or careers.many employment websites are designed to employers to post to a job requirement for a position to be filled and are commonly known as job portal.</p>
+        </div>
+        <div class="col-md-4 mt-3">
+            <h3 class="text-white ">news letter</h3>
+            <p style="color:yellow">if you want any extra information regarding me ,please send your your emailId</p>
+            <form method="post" class="form-inline">
+                {% csrf_token %}
+                <input type="email" name="emailid"placeholder=emailId required class="form-control mr-2">
+                <input class="btn btn-primary" type="submit" value="send">
+            </form>
+
+        </div>
+    </div>
+</div>
+</div>

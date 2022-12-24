@@ -1,0 +1,42 @@
+{% load static %}
+{% block body %}
+
+{% include 'admin_navigation.html' %}
+
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">recruiters list-Rejected</marquee>
+<hr>
+
+<table class="container table">
+    <thead style="background-color:blue;color:white">
+    <tr>
+        <td>SI.NO</td>
+        <td>Full Name</td>
+        <td>Email Id</td>
+        <td>Gender</td>
+        <td>Contact Number</td>
+        <td>company</td>
+        <td>Image</td>
+        <td>status</td>
+        <td>Action</td>
+
+    </tr>
+    </thead>
+    <tbody style="background-color:cyan;color:black">
+    {% for i in data %}
+    <tr >
+        <td>{{forloop.counter}}</td>
+        <td>{{i.user.first_name}} {{i.user.last_name}}</td>
+        <td>{{i.user.username}}</td>
+        <td>{{i.gender}}</td>
+        <td>{{i.mobile}}</td>
+        <td>{{i.company}}</td>
+        <td><img src="{{i.image.url}}" style="width:50px;height:50px;border-radius:60%"></td>
+        <td>{{i.status}}</td>
+
+        <td><a href="{% url 'change_status' i.id %}" class="btn btn-success btn-sm" >change status</a> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

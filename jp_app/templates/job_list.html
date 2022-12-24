@@ -1,0 +1,35 @@
+{% load static %}
+{% block body %}
+
+{% include 'recruiter_navigation.html' %}
+
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">view jobs</marquee>
+<hr>
+
+<table class="container table">
+    <thead style="background-color:blue;color:white">
+    <tr style="text-align:center">
+        <td>SI.NO</td>
+        <td>job title</td>
+        <td>creationdate</td>
+        <td>Action</td>
+  
+     
+
+    </tr>
+    </thead>
+    <tbody style="background-color:cyan;color:black">
+    {% for i in job %}
+    <tr style="text-align:center">
+        <td>{{forloop.counter}}</td>
+        <!-- <td>{{i.user.first_name}} {{i.user.last_name}}</td> -->
+        <td>{{i.title}}</td>
+        <td>{{i.creationdate}}</td>
+       
+        <td><a href="{% url 'edit_jobdetail' i.id %}" class="btn btn-success btn-sm" >edit</a>|<a href="{% url 'change_status' i.id %}" class="btn btn-danger btn-sm" >delete</a> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

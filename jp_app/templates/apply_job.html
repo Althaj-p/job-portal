@@ -1,0 +1,41 @@
+{% load static %}
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">Apply for job</marquee>
+<hr>
+<div class="container shadow-lg py-2 mb-2">
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row">
+            <label>
+                Upload Resume
+            </label>
+            <input type="file" class="form-control" name="resume">
+        </div>
+        <input type="submit">
+    </form>
+</div>
+{% ifequal error "close" %}
+<script>
+    alert("Application date expired")
+    window.location=('{% url "user_joblist" %}')
+</script>
+{% endifequal %}
+{% ifequal error "not open" %}
+<script>
+    alert("Accepting resume not started")
+    window.location=('{% url "user_joblist" %}')
+</script>
+{% endifequal %}
+{% ifequal error "done" %}
+<script>
+    alert("successfullly applied for job")
+    window.location=('{% url "user_joblist" %}')
+</script>
+{% endifequal %}
+
+
+
+{% endblock %}

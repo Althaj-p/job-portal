@@ -1,0 +1,40 @@
+{% load static %}
+{% block body %}
+
+{% include 'recruiter_navigation.html' %}
+
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">Applied candidates</marquee>
+<hr>
+<div class="container table">
+    <table class="container table">
+        <thead style="background-color:blue;color:white">
+        <tr style="text-align:center">
+            <td>SI.NO</td>
+            <td>Applicant name</td>
+            <td>contact</td>
+            <td>Email</td>
+            <td>Job title</td>
+            <td>Resume</td>
+            <!-- <td>Action</td> -->
+      
+         
+    
+        </tr>
+        </thead>
+        <tbody style="background-color:cyan;color:black">
+        {% for i in data %}
+        <tr style="text-align:center">
+            <td>{{forloop.counter}}</td>
+            <td>{{i.student.user.first_name}} {{i.student.user.last_name}}</td>
+            <td>{{i.student.mobile}}</td>
+            <td>{{i.student.user.username}}</td>
+            <td>{{i.job.title}}</td>
+            <td><a href="{{i.resume.url}}">Download resume</a></td>
+            <!-- <td><a href="{% url 'edit_jobdetail' i.id %}" class="btn btn-success btn-sm" >edit</a>|<a href="{% url 'change_status' i.id %}" class="btn btn-danger btn-sm" >delete</a> </td> -->
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+       
+</div>
+{% endblock %}

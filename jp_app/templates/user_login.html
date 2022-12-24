@@ -1,0 +1,30 @@
+{% load static %}
+{% block body %}
+
+{% include 'navigation.html' %}
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">user login</marquee>
+<hr>
+<form class="container mt-5" method="post">
+    {% csrf_token %}
+    <label><b>Email</b></label>
+    <input type="email" class="form-control"placeholder="Email"name="uname">
+    <label><b>Password</b></label>
+    <input type="password" class="form-control"placeholder="Password"name="pwd">
+    <input type="submit"class="btn btn-primary">
+    <a href="{% url 'user_signup' %}" class="btn btn-primary">create an account </a>
+</form>
+
+{% ifequal error "no" %}
+<script>
+    alert("login successful");
+    window.location=('{% url 'user_home' %}')
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    alert("something went wrong")
+</script>
+{% endifequal %}
+
+
+{% endblock %}

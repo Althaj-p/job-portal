@@ -1,0 +1,35 @@
+{% include 'user_navigation.html' %}
+{% block body %}
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">Saved Jobs</marquee>
+<hr>
+
+<table class="container table">
+    <thead style="background-color:blue;color:white">
+    <tr style="text-align:center">
+        <td>SI.NO</td>
+        <td>Job Title</td>
+        <td>Company Name</td>
+        <td>Location</td>
+        <td>Saved On</td>
+        <td>Action</td>
+    </tr>
+</thead>
+<tbody style="background-color:cyan;color:black">
+    {% for i in data %}
+    <tr style="text-align:center">
+        <td>{{forloop.counter}}</td>
+        <td>{{i.job.title}}</td>
+        <td>{{i.job.recruiter.company}}</td>
+        <td>{{i.job.location}}</td>
+        <td>{{i.created_at}}</td>
+        <td><a href="{% url 'job_detail' i.job.id %}" class="btn btn-danger btn-sm" > view Detail</a>|
+       <a href="{% url 'apply_job' i.job.id %}"class="btn btn-success btn-sm">Apply</a>|
+       <a href="{% url 'deleteWishlist' i.job.id %}"class="btn  btn-sm"><i class="fa fa-trash text-bold"style="font-size:larger"></i></a></td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}

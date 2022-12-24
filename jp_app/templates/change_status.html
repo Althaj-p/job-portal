@@ -1,0 +1,31 @@
+{% load static %}
+{% block body %}
+
+{% include 'admin_navigation.html' %}
+
+<form class="container mt-5" method="post">
+    {% csrf_token %}
+    <label><b>Full Name</b></label>
+    <input type="text"class="form-control"name="uname"value="{{data.user.first_name}}  {{data.user.last_name}} ">
+    <label><b>Status</b></label>
+    <select  class="form-control"name="status">
+        <option value="Accept">Accept</option>
+        <option value="Reject">Reject</option>
+    </select>
+    <input type="submit"class="btn btn-primary">
+</form>
+{% ifequal error "no" %}
+<script>
+    alert("status changed successful")
+    window.location=('{% url 'recruiters_all' %}')
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    alert("something went wrong")
+</script>
+{% endifequal %}
+
+
+
+{% endblock %}

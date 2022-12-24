@@ -1,0 +1,36 @@
+{% load static %}
+{% include 'user_navigation.html' %}
+{% block body %}
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">Home page</marquee>
+<hr>
+<div class="container">
+    <form class="form-inline my-2 my-lg-0 ">
+        <input class="form-control mr-sm-2 " type="search" placeholder="Search" aria-label="Search"style="width:90%"name="q">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            {% for i in data %}
+            <a href="{% url 'job_detail' i.id %}"style="text-decoration:none"><div class="card mb-2 text-dark " >
+                <div class="card-body">
+                 <h2 class="card-title">{{i.title}}</h2>
+                  <!-- <button class="btn "style="right:30px;top: 16px;position:absolute;z-index:9999999"><i class="fa fa-bookmark-o" type="submit"aria-hidden="true"style="bottom: 1px;position:absolute;z-index:9999999"></i></button>
+                 <button class="btn "style="right:20px;top: 20px;position:absolute;"><i class="fa fa-bookmark-o" type="submit"></i></button>  -->
+                 <img src="{{i.image.url}}"style="width: 50px;height: 50px;right:20px;top: 20px;position:absolute">
+                  <h4 class="card-text">{{i.recruiter.company}}</h4>
+                  <h6 class="card-subtitle mb-2 text-muted">{{i.location}}</h6>
+                  <p class="card-text">{{i.description}}</p>
+                  <P class="card-text text-muted">Posted on : {{i.creationdate}}</P>
+                </div>
+              </div></a>
+              {% endfor %}
+
+        </div>
+    </div>
+    
+
+
+    
+</div>
+{% endblock %}

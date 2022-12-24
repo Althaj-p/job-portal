@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>job portal</title>
+<style>
+.nav-link{
+    color:white;
+    margin-right:4px;
+    }
+.nav-link:hover{
+    color:yellow;
+    font-weight:bold;
+    background-color:red;
+    border-radius:10px
+    }
+.navbar-brand:hover{
+    color:yellow;
+    /* margin-right:4px; */
+    }
+
+
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 mt-2">
+            <img src="{% static 'images/job-portal-software-script_1.png' %}" style="width:180px;height:150px">
+
+        </div>
+        <div class="col-sm-6 mt-5 text-center">
+        <span style="font-weight:bold;font-size:30px">
+            <span style="color:red">online job</span>
+            <span style="color:green">portal system</span>
+        </span>
+            </div>
+        <div class="col-sm-3 mt-5">
+            <span style="font-weight:bold ;font-size:30px">
+               <span> <i class="fa fa-whatsapp pl-3 "></i></span>
+                <span> <i class="fa fa-twitter pl-3 "></i></span>
+                <span> <i class="fa fa-instagram pl-3"></i></span>
+                <span> <i class="fa fa-linkedin pl-3"></i></span>
+
+            </span>
+
+        </div>
+    </div>
+
+</div>
+<nav class="navbar navbar-expand-sm "style="background-color:maroon" >
+    <a class="navbar-brand pl-5 font-weight-bold " style="font-family:'monotype corsiva';font-size:30px">job portal</a>
+<ul class="navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link "style="margin-left:290px" href="{% url 'index' %}"><i class="fa fa-home mr-1"></i>home</a>
+    </li>
+ <li class="nav-item">
+        <a class="nav-link" href="{% url 'user_login' %}"><i class="fa fa-user-plus mr-1"></i>user login</a>
+    </li>
+ <li class="nav-item">
+        <a class="nav-link" href="{% url 'admin_login' %}"><i class="fa fa-sign-in mr-1"></i>admin login</a>
+    </li>
+ <li class="nav-item">
+        <a class="nav-link" href="{% url 'home_joblist' %}"><i class="fa fa-users mr-1"></i>available jobs</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'recruiter_login' %}"><i class="fa fa-sign-in mr-1"></i>recruiter login</a>
+    </li>
+
+ <li class="nav-item">
+        <a class="nav-link" href="{% url 'contact' %}"><i class="fa fa-sign-in mr-1"></i>contact</a>
+    </li>
+
+</ul>
+</nav>
+</body>
+</html>

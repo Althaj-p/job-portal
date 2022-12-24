@@ -1,0 +1,30 @@
+{% load static %}
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%"> job details</marquee>
+<hr>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img src="{{job.image.url}}"style="width:300px;heigth:200px">
+        </div>
+        <div class="col-md-6">
+            <h2>{{job.title}}</h2>
+            <p>{{job.recruiter.company}}<em><a href="{% url 'user_joblist'%}"> (view all jobs)</a></em></p>
+            <a href="#"class="mr-2"><i class="fa fa-map-marker mr-2"></i>{{job.location}}</a>
+            <a href="#"><i class="fa fa-calendar mr-2"></i>{{job.creationdate}}</a><br>
+            <strong><i class="fa fa-money mr-2 mt-2"></i>{{job.salary}}</strong><hr>
+            <h4>Job Description</h4>
+            <p>{{job.description}}</p><hr>
+            <a class="btn btn-danger" href="{% url 'apply_job' job.id %}">Apply for job</a>
+            {% if job.id in li %}
+            <a class="btn btn-success" href="{% url 'deleteWishlist' job.id %}">Remove saved job<i class="fa fa-heart ml-2"></i></a>
+            {% else %}
+            <a class="btn btn-success" href="{% url 'addWishlist' job.id %}">save job<i class="fa fa-heart-o ml-2"></i></a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% load static %}
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">user profile</marquee>
+<hr>
+<div class="row">
+<div class="col-sm-6">
+<form class="container mt-5 "name="signup" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label><b>first name</b></label>
+            <input type="text" class="form-control"value="{{student.user.first_name}}" name="fname" required>
+        </div>
+        <div class="form-group col-md-6">
+            <label><b>Last Name </b></label>
+            <input type="text" class="form-control"value="{{student.user.last_name}}" name="lname" required>
+        </div>
+    </div>
+     <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>contact</b></label>
+            <input type="text" class="form-control"value="{{student.mobile}}" name="contact" required>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-12">
+            <label><b>Email Id</b></label>
+            <input type="email" class="form-control"value="{{student.user.username}}"name="email"required>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+
+            <label><b>Gender</b></label>
+            <div style="border:1px solid lightgrey; padding:6px;border-radius:6px">
+            <div class="custom-radio custom-control custom-control-inline">
+            <input type="radio" class="custom-control-input"name="gender" id="customRadioinline1" value="male">
+                <label class="custom-control-label"for="customRadioinline1">male</label>
+            </div>
+            <div class="custom-radio custom-control custom-control-inline">
+            <input type="radio" class="custom-control-input"name="gender" id="customRadioinline2" value="female">
+                <label class="custom-control-label"for="customRadioinline2">female</label>
+            </div>
+        </div>
+
+
+            </div>
+        <div class="form-group col-md-6">
+            <label><b>upload image </b></label>
+            <input type="file" class="form-control" name="image">
+        </div>
+    </div>
+
+    <input type="submit"value="submit" class="btn btn-primary  " style="width:200px">
+
+
+
+
+
+</form>
+        </div>
+
+
+<div class="col-sm-4 mt-5">
+    <img src="{{student.image.url}}" style="width:300px;height:300px">
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+
+{% include 'footer.html' %}
+
+{% ifequal error "no" %}
+<script>
+    alert("profile updated successful")
+    window.location=('{% url "user_home" %}')
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    alert("something went wrong")
+</script>
+{% endifequal %}
+
+
+
+{% endblock %}

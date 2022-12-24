@@ -1,0 +1,38 @@
+{% load static %}
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<marquee style="font-family:monotype corsiva; font-size:25px; background-color:darkcyan; color:white;font-weight:bold;margin-top:1%">Applied job List</marquee>
+<hr>
+
+<table class="container table">
+    <thead style="background-color:blue;color:white">
+    <tr>
+        <td>SI.NO</td>
+        <td>Job title</td>
+        <td>company</td>
+        <td>Location</td>
+        <td>salary</td>
+        <td>Applied date</td>
+        <td>Action</td>
+
+    </tr>
+    </thead>
+    <tbody style="background-color:cyan;color:black">
+    {% for i in data %}
+    <tr >
+        <td>{{forloop.counter}}</td>
+        <td>{{i.job.title}}</td>
+        <td>{{i.job.recruiter.company}}</td>
+        <td>{{i.job.location}}</td>
+        <td>{{i.job.salary}}</td>
+        <td>{{i.applydate}}</td>
+
+        <td><a href="{% url 'delete_application' i.id %}" class="btn btn-danger btn-sm" onclick="return confirm('are you sure to delete?')">Delete</a> </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
